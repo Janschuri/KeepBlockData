@@ -1,0 +1,4 @@
+name: KeepBlockData
+version: '${project.version}'
+main: de.janschuri.keepblockdata.KeepBlockData
+api-version: '1.20'
