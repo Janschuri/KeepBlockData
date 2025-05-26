@@ -5,14 +5,10 @@ import de.janschuri.lunaticlib.platform.bukkit.util.ItemStackUtils;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockDropItemEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-
-import java.util.List;
 
 public class BlockBreakListener implements Listener {
 
@@ -31,20 +27,7 @@ public class BlockBreakListener implements Listener {
             ItemStack newItem = event.getItems().get(0).getItemStack();
 
             if (oldItem.getType() == newItem.getType()) {
-                ItemMeta meta = newItem.getItemMeta();
-
-                String oldName = oldItem.getItemMeta().getDisplayName();
-                List<String> oldLore = oldItem.getItemMeta().getLore();
-
-                if (oldName != null) {
-                    meta.setDisplayName(oldName);
-                }
-
-                if (oldLore != null) {
-                    meta.setLore(oldLore);
-                }
-
-                newItem.setItemMeta(meta);
+                newItem.setItemMeta(oldItem.getItemMeta());
             }
         }
     }
